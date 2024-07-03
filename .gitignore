@@ -1,0 +1,5 @@
+/.vscode
+/__pycache__
+/chrome-linux64.zip
+/geckodriver-v0.34.0-linux64
+/geckodriver-v0.34.0-linux64.tar.gz
