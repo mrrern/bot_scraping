@@ -13,9 +13,9 @@ def is_within_two_months(date_str):
 
 def login_and_book_test(user_id, password, favorite_centre):
     #Configurar Opciones
-    option = webdriver.ChromeOptions()
+    
     # Configuración del navegador
-    driver = webdriver.Chrome(options=option)
+    driver = webdriver.Chrome()
     driver.maximize_window()
     # Navegar a la página inicial
     driver.get("https://www.gov.uk/book-pupil-driving-test")
