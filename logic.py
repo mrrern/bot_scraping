@@ -25,8 +25,7 @@ def login_and_book_test(user_id, password, favorite_centre):
     start_test_button.click()
 
     # Esperar y navegar a la página de inicio de sesión
-    time.sleep(2)
-    driver.get("https://www.access.service.gov.uk/login/signin/creds?aoc=Y")
+    WebDriverWait.until
 
     # Inicio de sesión
     user_id_field = driver.find_element(By.ID, "user-id")
@@ -53,9 +52,3 @@ def login_and_book_test(user_id, password, favorite_centre):
     # Click en el botón "Book test"
     book_test_button = driver.find_element(By.ID, "submitSlotSearch")
     book_test_button.click()
-
-    
-
-
-
-
