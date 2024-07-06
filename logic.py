@@ -14,9 +14,9 @@ def is_within_two_months(date_str):
 
 def login_and_book_test():
     # Configure Safari browser
-    options = webdriver.SafariOptions()
+    options = webdriver.ChromeOptions()
     options.page_load_strategy = 'normal'  # Load the entire page before proceeding
-    driver = webdriver.Safari(options=options)
+    driver = webdriver.Chrome(options=options)
     driver.maximize_window()
 
     # Navigate to the homepage
