@@ -1,11 +1,13 @@
 from tkinter import messagebox
 from tkinter import ttk
 import tkinter as tk
+from logic import login_and_book_test as botin
 
 def start_bot():
     # Replace this placeholder with your actual bot functionality,
     # potentially calling `login_and_book_test` if necessary.
     messagebox.showinfo(title="Bot Initiated", message="The bot is now running!")
+    botin.__init__
 
 # Configuración de la interfaz gráfica
 root = tk.Tk()
