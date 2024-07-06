@@ -7,7 +7,7 @@ def start_bot():
     # Replace this placeholder with your actual bot functionality,
     # potentially calling `login_and_book_test` if necessary.
     messagebox.showinfo(title="Bot Initiated", message="The bot is now running!")
-    botin.__init__
+
 
 # Configuración de la interfaz gráfica
 root = tk.Tk()
@@ -20,5 +20,7 @@ label.pack(pady=20)  # Add some padding for better layout
 # Use a prominent button with "Iniciar Bot" (Start Bot) label
 start_button = tk.Button(root, text="Iniciar Bot", command=start_bot, font=("Arial", 14, "bold"))
 start_button.pack()
+botin()
 
 root.mainloop()
+
