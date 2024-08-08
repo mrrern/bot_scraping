@@ -1,7 +1,7 @@
 from tkinter import messagebox
 from tkinter import ttk
 import tkinter as tk
-from logic import login_and_book_test as botin
+from punter import reserve_test as botin
 
 def start_bot():
     # Replace this placeholder with your actual bot functionality,
