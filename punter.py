@@ -13,6 +13,7 @@ def click_button(image, timeout=30, confidence=0.8):
                 pyautogui.click()
                 return True
         except pyautogui.ImageNotFoundException:
+            print("Button not found")
             pass
         time.sleep(1)
     return False
