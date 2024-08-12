@@ -70,19 +70,17 @@ import time
 from tkinter import messagebox
 import tkinter as tk
 
-def click_button(image, confidence=0.8, timeout=30):
+def click_button(image, timeout=30):
     start_time = time.time()
     while time.time() - start_time < timeout:
-        button_location = pyautogui.locateOnScreen(image, confidence=confidence)
-        if button_location is not None:
-            pyautogui.click(button_location)
-            return True
+        try:
+            button_location = pyautogui.locateOnScreen(image)
+            if button_location is not None:
+                pyautogui.click(button_location)
+                return True
+        except pyautogui.ImageNotFoundException:
+            pass
         time.sleep(1)
-    return False
-
-def check_reservations():
-    # Replace this function with the actual check logic for reservations
-    # Here we just return False for the sake of demonstration
     return False
 
 def reserve_test():
