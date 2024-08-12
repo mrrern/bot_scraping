@@ -3,13 +3,14 @@ import time
 from tkinter import messagebox
 import tkinter as tk
 
-def click_button(image, timeout=30):
+def click_button(image, timeout=30, confidence=0.8):
     start_time = time.time()
     while time.time() - start_time < timeout:
         try:
-            button_location = pyautogui.locateOnScreen(image)
+            button_location = pyautogui.locateOnScreen(image, confidence=confidence)
             if button_location is not None:
-                pyautogui.click(button_location)
+                pyautogui.moveTo(button_location)
+                pyautogui.click()
                 return True
         except pyautogui.ImageNotFoundException:
             pass
@@ -25,9 +26,9 @@ def reserve_test():
     return False
 
 def activate_chrome():
-    # Suponiendo que la barra de título de Chrome está en (x=100, y=10)
     # Ajusta estos valores según la posición de la barra de título en tu pantalla
-    pyautogui.click(100, 10)
+    pyautogui.moveTo(100, 10)
+    pyautogui.click()
     time.sleep(1)
 
 def main():
