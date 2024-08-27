@@ -3,14 +3,16 @@ import time
 from tkinter import messagebox
 import tkinter as tk
 
-def click_button(image, timeout=30, confidence=0.8):
+def click_button(image, timeout=60, confidence=0.8):
     start_time = time.time()
     while time.time() - start_time < timeout:
         try:
             button_location = pyautogui.locateOnScreen(image, confidence=confidence)
             if button_location is not None:
-                pyautogui.moveTo(button_location.x + 10, button_location.y + 10)  # type: ignore # Move the cursor to the button
-                pyautogui.click()
+                # Buscar la imagen y esperar 10 segundos
+                time.sleep(10)
+                # Click en el centro de la imagen
+                pyautogui.moveTo(button_location.left + button_location.width / 2, button_location.top + button_location.height / 2)
                 return True
         except pyautogui.ImageNotFoundException:
             print("Button not found")
@@ -20,9 +22,9 @@ def click_button(image, timeout=30, confidence=0.8):
 
 def reserve_test():
     if click_button('images/view.png'):
-        time.sleep(2)
+        time.sleep(10)  # Esperar 10 segundos antes de continuar
         while click_button('images/reserve_test.png'):
-            time.sleep(1)
+            time.sleep(10)  # Esperar 10 segundos entre cada reserva
         return True
     return False
 
@@ -30,7 +32,7 @@ def activate_chrome():
     # Ajusta estos valores según la posición de la barra de título en tu pantalla
     pyautogui.moveTo(100, 10)
     pyautogui.click()
-    time.sleep(1)
+    time.sleep(10)  # Esperar 10 segundos antes de continuar
 
 def main():
     reservations_needed = 10
@@ -45,11 +47,11 @@ def main():
     while reservations_done < reservations_needed:
         if not reserve_test():
             if click_button('images/next_available.png'):
-                time.sleep(5)
+                time.sleep(10)  # Esperar 10 segundos antes de continuar
                 pyautogui.scroll(-10000)  # Scroll to the bottom
-                time.sleep(2)
+                time.sleep(10)  # Esperar 10 segundos antes de continuar
                 pyautogui.scroll(10000)  # Scroll to the top
-                time.sleep(2)
+                time.sleep(10)  # Esperar 10 segundos antes de continuar
                 continue
             else:
                 messagebox.showerror("No hay tests disponibles", "No hay tests disponibles")
@@ -63,15 +65,15 @@ def main():
                     messagebox.showinfo("Programa completado", "Programa completado")
                     return
             else:
-                time.sleep(5)
+                time.sleep(10)  # Esperar 10 segundos antes de continuar
                 if click_button('images/return_search.png'):
-                    time.sleep(5)
+                    time.sleep(10)  # Esperar 10 segundos antes de continuar
                     break
                 else:
                     messagebox.showinfo("Proceso terminado", f"Reservas hechas: {reservations_done}")
                     return
 
-        time.sleep(5)  # Wait before looking for the next available slot
+        time.sleep(10)  # Esperar 10 segundos antes de continuar
 
     messagebox.showinfo("Proceso terminado", f"Reservas hechas: {reservations_done}")
     print(f'Proceso terminado. Reservas hechas: {reservations_done}')
