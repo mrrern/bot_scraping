@@ -9,7 +9,7 @@ def click_button(image, timeout=30, confidence=0.8):
         try:
             button_location = pyautogui.locateOnScreen(image, confidence=confidence)
             if button_location is not None:
-                pyautogui.moveTo(button_location)
+                pyautogui.moveTo(button_location.x + 10, button_location.y + 10)  # type: ignore # Move the cursor to the button
                 pyautogui.click()
                 return True
         except pyautogui.ImageNotFoundException:
